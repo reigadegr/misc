@@ -15,7 +15,7 @@ get_val(){
 }
 app="$(dumpsys activity lru|rg " TOP"|cut -d ':' -f3|cut -d '/' -f1)"
 
-get_val >"$app".txt
+get_val |tee "$app".txt
 
 if [ "$app" != "$(dumpsys activity lru|rg " TOP"|cut -d ':' -f3|cut -d '/' -f1)" ]; then
     mv "$app".txt "退出游戏时机太早".txt
